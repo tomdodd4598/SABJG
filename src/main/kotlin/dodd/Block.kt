@@ -373,6 +373,76 @@ class RFCavity : Block() {
 """
 }
 
+class Machine : Block() {
+
+    override fun getFileName(blockName: String) = "$blockName.json"
+
+    override fun getJsonContents(blockName: String) = """{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "nuclearcraft:machine",
+		"textures": {
+			"top": "nuclearcraft:blocks/${blockName}_top",
+			"bottom": "nuclearcraft:blocks/${blockName}_side",
+			"front": "nuclearcraft:blocks/${blockName}_front_off",
+			"side": "nuclearcraft:blocks/${blockName}_side",
+			"back": "nuclearcraft:blocks/${blockName}_side"
+		}
+	},
+	"variants": {
+		"inventory": [{}],
+		"active": {
+			"false": {},
+			"true": {
+				"textures": {
+					"front": "nuclearcraft:blocks/${blockName}_front_on"
+				}
+			}
+		},
+		"facing": {
+			"north": {},
+			"east": {"y": 90},
+			"south": {"y": 180},
+			"west": {"y": 270}
+		}
+	}
+}
+"""
+}
+
+class Processor : Block() {
+
+    override fun getFileName(blockName: String) = "$blockName.json"
+
+    override fun getJsonContents(blockName: String) = """{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "nuclearcraft:processor",
+		"textures": {
+			"front": "nuclearcraft:blocks/${blockName}_front_off"
+		}
+	},
+	"variants": {
+		"inventory": [{}],
+		"active": {
+			"false": {},
+			"true": {
+				"textures": {
+					"front": "nuclearcraft:blocks/${blockName}_front_on"
+				}
+			}
+		},
+		"facing": {
+			"north": {},
+			"east": {"y": 90},
+			"south": {"y": 180},
+			"west": {"y": 270}
+		}
+	}
+}
+"""
+}
+
 class Magnet : Block() {
 
     override fun getFileName(blockName: String) = "accelerator_magnet_$blockName.json"

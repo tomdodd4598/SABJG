@@ -21,6 +21,8 @@ fun main(args: Array<String>) {
     put("stator", Stator())
     put("rtg", RTG())
     put("battery", Battery())
+    put("machine", Machine())
+    put("processor", Processor())
     put("rf_cavity", RFCavity())
     put("magnet", Magnet())
     put("detector", Detector())
