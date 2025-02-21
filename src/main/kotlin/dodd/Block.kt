@@ -353,26 +353,6 @@ class Battery : Block() {
 """
 }
 
-class RFCavity : Block() {
-
-    override fun getFileName(blockName: String) = "accelerator_rf_cavity_$blockName.json"
-
-    override fun getJsonContents(blockName: String) = """{
-	"forge_marker": 1,
-	"defaults": {
-		"model": "cube_all",
-		"textures": {
-			"all": "nuclearcraft:blocks/rf_cavity_$blockName"
-		}
-	},
-	"variants": {
-		"inventory": [{}],
-		"normal": [{}]
-	}
-}
-"""
-}
-
 class Machine : Block() {
 
     override fun getFileName(blockName: String) = "$blockName.json"
@@ -443,6 +423,46 @@ class Processor : Block() {
 """
 }
 
+class Cooler : Block() {
+
+    override fun getFileName(blockName: String) = "accelerator_cooler_$blockName.json"
+
+    override fun getJsonContents(blockName: String) = """{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "cube_all",
+		"textures": {
+			"all": "nuclearcraft:blocks/cooler_$blockName"
+		}
+	},
+	"variants": {
+		"inventory": [{}],
+		"normal": [{}]
+	}
+}
+"""
+}
+
+class RFCavity : Block() {
+
+    override fun getFileName(blockName: String) = "accelerator_rf_cavity_$blockName.json"
+
+    override fun getJsonContents(blockName: String) = """{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "cube_all",
+		"textures": {
+			"all": "nuclearcraft:blocks/rf_cavity_$blockName"
+		}
+	},
+	"variants": {
+		"inventory": [{}],
+		"normal": [{}]
+	}
+}
+"""
+}
+
 class Magnet : Block() {
 
     override fun getFileName(blockName: String) = "accelerator_magnet_$blockName.json"
@@ -498,6 +518,37 @@ class ChamberHeater : Block() {
 	"variants": {
 		"inventory": [{}],
 		"normal": [{}]
+	}
+}
+"""
+}
+
+class IonSource : Block() {
+
+    override fun getFileName(blockName: String) = "accelerator_source_$blockName.json"
+
+    override fun getJsonContents(blockName: String) = """{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "nuclearcraft:machine",
+		"textures": {
+			"top": "qmd:blocks/accelerator/casing",
+			"bottom": "qmd:blocks/accelerator/casing",
+			"front": "nuclearcraft:blocks/ion_source_${blockName}_front",
+			"side": "qmd:blocks/accelerator/casing",
+			"back": "nuclearcraft:blocks/ion_source_${blockName}_back"
+		}
+	},
+	"variants": {
+		"inventory": [{}],
+		"facing": {
+			"down": {"x": 90},
+			"up": {"x": 270},
+			"north": {},
+			"east": {"y": 90},
+			"south": {"y": 180},
+			"west": {"y": 270}
+		}
 	}
 }
 """

@@ -21,12 +21,16 @@ fun main(args: Array<String>) {
     put("stator", Stator())
     put("rtg", RTG())
     put("battery", Battery())
+
     put("machine", Machine())
     put("processor", Processor())
+
+    put("cooler", Cooler())
     put("rf_cavity", RFCavity())
     put("magnet", Magnet())
     put("detector", Detector())
     put("chamber_heater", ChamberHeater())
+    put("ion_source", IonSource())
 
     val argc = args.size
     if (argc == 0) {
