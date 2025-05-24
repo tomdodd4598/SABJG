@@ -6,18 +6,10 @@ plugins {
 }
 
 group = "me.tom.dodd"
-version = "5.0"
+version = "6.0"
 
 repositories {
     mavenCentral()
-}
-
-dependencies {
-    testImplementation(kotlin("test"))
-}
-
-tasks.test {
-    useJUnit()
 }
 
 tasks.withType<KotlinCompile> {

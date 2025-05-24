@@ -1,36 +1,36 @@
 package dodd
 
 val typeList = mutableListOf<String>()
-val blockMap = mutableMapOf<String, Block>()
+val writerMap = mutableMapOf<String, List<Writer>>()
 
-fun put(type: String, block: Block) {
+fun put(type: String, vararg writers: Writer) {
     typeList.add(type)
-    blockMap[type] = block
+    writerMap[type] = writers.asList()
 }
 
 fun types() = typeList.joinToString("\n", "Available block types:\n", "\n")
 
 fun main(args: Array<String>) {
-    put("sink", Sink())
-    put("heater", Heater())
-    put("heater_port", HeaterPort())
-    put("source", Source())
-    put("shield", Shield())
-    put("coil", Coil())
-    put("blade", Blade())
-    put("stator", Stator())
-    put("rtg", RTG())
-    put("battery", Battery())
+    put("rtg", RTG)
+    put("battery", Battery)
+    put("sink", Sink)
+    put("heater", Heater, HeaterPort)
+    put("source", Source)
+    put("shield", Shield)
+    put("tube", Tube, TubeCenter, TubeOpen, TubeOpenBaffle, TubeItem)
+    put("coil", Coil)
+    put("blade", Blade)
+    put("stator", Stator)
 
-    put("machine", Machine())
-    put("processor", Processor())
+    put("machine", Machine)
+    put("processor", Processor)
 
-    put("cooler", Cooler())
-    put("rf_cavity", RFCavity())
-    put("magnet", Magnet())
-    put("detector", Detector())
-    put("chamber_heater", ChamberHeater())
-    put("ion_source", IonSource())
+    put("cooler", Cooler)
+    put("rf_cavity", RFCavity)
+    put("magnet", Magnet)
+    put("detector", Detector)
+    put("chamber_heater", ChamberHeater)
+    put("ion_source", IonSource)
 
     val argc = args.size
     if (argc == 0) {
@@ -42,7 +42,7 @@ ${types()}
     }
 
     val blockType = args[0].lowercase()
-    if (!blockMap.containsKey(blockType)) {
+    if (!writerMap.containsKey(blockType)) {
         print("""Could not find block type "$blockType"!
 ${types()}
 """
@@ -50,9 +50,11 @@ ${types()}
         return
     }
 
-    val block = blockMap[blockType]
+    val writers = writerMap[blockType]!!
     for (i in 1 until argc) {
         val blockName = args[i].lowercase()
-        block!!.writeToFile(blockName)
+        for (writer in writers) {
+            writer.writeToFile(blockName)
+        }
     }
 }
