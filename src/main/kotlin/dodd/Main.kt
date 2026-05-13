@@ -13,6 +13,7 @@ fun types() = typeList.joinToString("\n", "Available block types:\n", "\n")
 fun main(args: Array<String>) {
     put("rtg", RTG)
     put("battery", Battery)
+    put("gas_cooler", GasCooler, GasCoolerPort)
     put("sink", Sink)
     put("heater", Heater, HeaterPort)
     put("source", Source)
@@ -25,7 +26,7 @@ fun main(args: Array<String>) {
     put("machine", Machine)
     put("processor", Processor)
 
-    put("cooler", Cooler)
+    put("acc_cooler", AccCooler)
     put("rf_cavity", RFCavity)
     put("magnet", Magnet)
     put("detector", Detector)

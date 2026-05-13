@@ -95,6 +95,61 @@ object Battery : Writer() {
     )
 }
 
+object GasCooler : Writer() {
+
+    override fun getFilePath(blockName: String) = "blockstates/pebble_fission_cooler_$blockName.json"
+
+    override fun getJsonContents(blockName: String) = json(
+        "forge_marker" to 1,
+        "defaults" to obj(
+            "model" to "cube_all",
+            "textures" to obj(
+                "all" to "nuclearcraft:blocks/gas_cooler_$blockName"
+            )
+        ),
+        "variants" to obj(
+            "inventory" to arr(obj()),
+            "normal" to arr(obj())
+        )
+    )
+}
+
+object GasCoolerPort : Writer() {
+
+    override fun getFilePath(blockName: String) = "blockstates/fission_cooler_port_$blockName.json"
+
+    override fun getJsonContents(blockName: String) = json(
+        "forge_marker" to 1,
+        "defaults" to obj(
+            "model" to "nuclearcraft:fission_port_overlayed",
+            "textures" to obj(
+                "front" to "nuclearcraft:blocks/gas_cooler_port_$blockName",
+                "overlay" to "nuclearcraft:blocks/fission/port/cooler/off"
+            )
+        ),
+        "variants" to obj(
+            "inventory" to arr(obj()),
+            "active" to obj(
+                "false" to obj(),
+                "true" to obj(
+                    "textures" to obj(
+                        "overlay" to "nuclearcraft:blocks/fission/port/cooler/on"
+                    )
+                )
+            ),
+            "axis" to obj(
+                "x" to obj(
+                    "y" to 90
+                ),
+                "y" to obj(
+                    "x" to 90
+                ),
+                "z" to obj()
+            )
+        )
+    )
+}
+
 object Sink : Writer() {
 
     override fun getFilePath(blockName: String) = "blockstates/solid_fission_sink_$blockName.json"
@@ -477,7 +532,7 @@ object Processor : Writer() {
     )
 }
 
-object Cooler : Writer() {
+object AccCooler : Writer() {
 
     override fun getFilePath(blockName: String) = "blockstates/accelerator_cooler_$blockName.json"
 
@@ -486,7 +541,7 @@ object Cooler : Writer() {
         "defaults" to obj(
             "model" to "cube_all",
             "textures" to obj(
-                "all" to "nuclearcraft:blocks/cooler_$blockName"
+                "all" to "nuclearcraft:blocks/acc_cooler_$blockName"
             )
         ),
         "variants" to obj(
